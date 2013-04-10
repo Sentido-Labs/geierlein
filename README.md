@@ -47,20 +47,26 @@ right on the command line.
     firefox -app application.ini -load pfad/zur/datei
 
 
- Runtime Dependencies
+ Frequently Asked Questions
 -------------------------------
 
-Geierlein's source code is [available on
-Github](https://github.com/stesie/geierlein).  If you'd like to use the
-bleeding edge version from there, keep in mind that you need to fetch
-the Git submodules in order to have a useable checkout:
+Q: Firefox/XUL-Runner complains about incompatible platform versions:
 
-    git clone git://github.com/stesie/geierlein.git
-    git submodule init
-    git submodule update
+    Error: Platform version '20.0a1' is not compatible with
+    minVersion >= 3.5
+    maxVersion <= 16.*
 
-If you'd like to improve Geierlein, simply fork the project on Github,
-incorporate your changes and initiate a pull request.
+Due to the error message Geierlein does not start (any longer).
+
+A: Geierlein is _not_ incompatible to the Firefox/XUL-Runner version
+you use, as stated in the error message.  It just has not been
+tested against it (or you use an old version).
+
+The maximum version number can easily be edited in the application.ini
+file.  You can just bump it to whichever version of Firefox you use.
+Simply keep in mind that you might come accross incompatibilities due
+to changed Firefox APIs.  In that case simply open an issue ticket at
+GitHub.
 
 
  License
