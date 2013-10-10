@@ -15,15 +15,25 @@
                     <img src="img/geierlein-logo-color-white.png" alt="Geierlein Logo" />
                 </a>
                 <ul class="nav">
-                    <li class="active"><a href="#">Formular</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Formular
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" id="form-import">Import ...</a></li>
+                            <li><a href="#" id="form-export">Export ...</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" id="form-ustsvza">Dauerfristverlängerung</a></li>
                     <li><a data-toggle="modal" href="#about">Info</a></li>
-                    <li><a href="http://stesie.github.com/geierlein/" target="_blank">Website</a></li>
+                    <li><a href="http://stesie.github.io/geierlein/" target="_blank">Website</a></li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <div class="container">
+    <div id="main" class="container">
         <form class="form-horizontal">
             <div class="accordion">
                 <div class="accordion-group">
@@ -65,7 +75,7 @@
                                 <div class="control-group">
                                     <label class="control-label span4" for="land">Bundesland</label>
                                     <div class="span4">
-                                        <select id="land" class="span4 ustva">
+                                        <select id="land" class="span4 ustva ustsvza">
                                             <option value="1">Baden-Württemberg</option>
                                             <option value="2">Bayern</option>
                                             <option value="3">Berlin</option>
@@ -103,12 +113,12 @@
                                 <div class="control-group">
                                     <label class="control-label span4" for="steuernummer">Steuernummer</label>
                                     <div class="span4">
-                                        <input type="text" id="steuernummer" class="span4 ustva"/>
+                                        <input type="text" id="steuernummer" class="span4 ustva ustsvza"/>
                                     </div>
                                 </div>
 
                                 <div class="buttons">
-                                    <input id="store-defaults" type="button" class="btn hide-native pull-right"
+                                    <input id="store-defaults" type="button" class="btn pull-right"
                                         value="Als Standard speichern"/>
                                 </div>
                             </fieldset>
@@ -667,11 +677,11 @@
             <h3>Über Geierlein</h3>
         </div>
         <div class="modal-body">
-            <p><a target="_blank" href="http://stesie.github.com/geierlein/">Geierlein</a>
+            <p><a target="_blank" href="http://stesie.github.io/geierlein/">Geierlein</a>
             ist ein in HTML5 und JavaScript entwickelter
             <a target="_blank" href="https://www.elster.de/">Elster</a>-Client.</p>
 
-            <p><a target="_blank" href="http://stesie.github.com/geierlein/">Geierlein</a>
+            <p><a target="_blank" href="http://stesie.github.io/geierlein/">Geierlein</a>
                 ist freie Software. Du kannst es unter den
                 Bedingungen der <a target="_blank" href="http://opensource.org/licenses/AGPL-3.0">
                 GNU Affero General Public License</a>, wie von der
@@ -693,7 +703,18 @@
         </div>
         <div class="modal-body">
             <div class="alert alert-info">
-                Aufgrund einer Gesetzesänderung ist seit dem 01.01.2013 nur noch die Übermittlung mit Signatur möglich.  Hierfür ist eine Registrierung unter www.elsteronline.de durchzuführen.
+                <p>
+                    Aufgrund einer Gesetzesänderung ist seit dem 01.01.2013 nur noch die
+                    Übermittlung mit Signatur zulässig.  Hierfür ist eine Registrierung
+                    unter <a href="https://www.elsteronline.de/eportal/Oeffentlich.tax">www.elsteronline.de</a>
+                    durchzuführen.
+                </p>
+
+                <p>
+                    Für eine Übergangszeit bis zum 31.08.2013 werden Abgaben ohne Authentifizierung
+                    weiterhin akzeptiert, vgl. auch die
+                    <a href="https://www.elster.de/" target="_blank">Elster Projektseite</a>.
+                </p>
             </div>
 
             <form class="form-horizontal">
@@ -701,7 +722,7 @@
                     <div class="control-group">
                         <label class="control-label" for="sig-enable">Signatur hinzufügen</label>
                         <div class="span1">
-                            <input type="checkbox" id="sig-enable" checked="checked" disabled="disabled" />
+                            <input type="checkbox" id="sig-enable" checked="checked" />
                         </div>
                     </div>
 
@@ -755,8 +776,95 @@
         </div>
     </div>
 
-    <script src="js/jquery-1.7.2.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <div class="modal hide" id="ustsvza">
+        <div class="modal-header">
+            <a class="close" data-dismiss="modal">×</a>
+            <h3>Antrag auf Dauerfristverlängerung …</h3>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal">
+                <fieldset>
+                    <div class="control-group">
+                        <label class="control-label span1" for="SVZ-jahr">Jahr</label>
+                        <div class="span4">
+                            <select id="SVZ-jahr" class="span4 ustsvza">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label span1" for="SVZ-type">Abgaberhythmus</label>
+                        <div class="span4">
+                            <select id="SVZ-type" class="span4 ustsvza">
+                                <option value="Dauerfristverlaengerung">Quartal</option>
+                                <option value="Umsatzsteuersondervorauszahlung">Monat</option>
+                            </select>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div id="ustsvza-svz-Umsatzsteuersondervorauszahlung" class="ustsvza-svz hide">
+                    <fieldset>
+                        <h4>Anmeldung der Sondervorauszahlung</h4>
+
+                        <div class="control-group">
+                            <label class="control-label span1" for="SVZ-vjsum">Vorauszahlungen Vorjahr</label>
+                            <div class="span4">
+                                <input type="text" id="SVZ-vjsum" class="span4"
+                                       title="Summe der verbleibenden Umsatzsteuer-Vorauszahlungen zuzüglich der angerechneten Sondervorauszahlung für das Vorjahr"/>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label span1" for="SVZ-Kz38">Sondervorauszahlung</label>
+                            <div class="span4 input-prepend">
+                                <span class="kz add-on">38</span>
+                                <input type="text" id="SVZ-Kz38" class="span4 ustsvza multiply" disabled/>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label span1" for="SVZ-Kz29">Verrechnung erwünscht</label>
+                            <div class="span1">
+                                <input type="checkbox" id="SVZ-Kz29" class="ustsvza" value="1"
+                                       title="Verrechnung des Erstattungsbetrags erwünscht / Erstattungsbetrag ist abgetreten"/>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label span1" for="SVZ-Kz26">Widerruf Einzugserm.</label>
+                            <div class="span1">
+                                <input type="checkbox" id="SVZ-Kz26" class="ustsvza" value="1"
+                                       title="Die Einzugsermächtigung wird ausnahmsweise (z.B. wegen Verrechnungswünschen) für diesen Voranmeldungszeitraum widerrufen.  Ein ggf. verbleibender Restbetrag ist gesondert zu entrichten."/>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div id="ustsvza-svz-Dauerfristverlaengerung" class="ustsvza-svz">
+                    <div class="alert alert-info">
+                        <p>
+                            Der Antrag auf Dauerfristverlängerung ist nicht zu stellen, wenn Dauerfrist-
+                            verlängerung bereits gewährt worden ist. <em>Er ist nicht jährlich zu wiederholen.</em>
+                            Eine Sondervorauszahlung ist nicht zu berechnen und anzumelden.
+                        </p>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn left" data-dismiss="modal">Abbrechen</a>
+            <a href="#" class="btn" id="SVZ-send-testcase">Senden als Testfall</a>
+            <a href="#" class="btn btn-primary" id="SVZ-send">Daten senden</a>
+        </div>
+    </div>
+
+    <form>
+        <input type="file" id="file-select" class="hide" />
+    </form>
+
+    <script src="lib/jquery-2.0.2.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
     <script src="lib/xmlwriter.js"></script>
     <script src="lib/geierlein/util.js"></script>
     <script src="lib/geierlein/taxnumber.js"></script>
@@ -764,11 +872,14 @@
     <script src="lib/geierlein/datenlieferant.js"></script>
     <script src="lib/geierlein/steuerfall.js"></script>
     <script src="lib/geierlein/ustva.js"></script>
+    <script src="lib/geierlein/ustsvza.js"></script>
     <script src="lib/forge/js/util.js"></script>
     <script src="lib/forge/js/oids.js"></script>
     <script src="lib/forge/js/asn1.js"></script>
+    <script src="lib/forge/js/pem.js"></script>
     <script src="lib/forge/js/jsbn.js"></script>
     <script src="lib/forge/js/sha1.js"></script>
+    <script src="lib/forge/js/sha256.js"></script>
     <script src="lib/forge/js/des.js"></script>
     <script src="lib/forge/js/rsa.js"></script>
     <script src="lib/forge/js/pki.js"></script>
@@ -785,13 +896,12 @@
     <script src="lib/gzip-js/lib/rawdeflate.js"></script>
     <script src="lib/gzip-js/lib/rawinflate.js"></script>
     <script src="lib/gzip-js/lib/gzip.js"></script>
+    <script src="lib/prefstore/xul.js"></script>
+    <script src="lib/prefstore/localstorage.js"></script>
     <script src="lib/jsxml/jsxml.js"></script>
-    <script>
-        if(window.forge === undefined) {
-            alert('Die Verschlüsselungsbibliothek "forge" ist nicht verfügbar.  Ohne diese ist eine Datenübertragung nicht möglich.\n' +
-                'Die Geierlein-Installation ist unvollständig.');
-        }
-    </script>
+    <script src="lib/Blob.js/Blob.js"></script>
+    <script src="lib/Blob.js/BlobBuilder.js"></script>
+    <script src="lib/FileSaver.js/FileSaver.js"></script>
     <script src="lib/geierlein/crypto.js"></script>
     <script src="lib/geierlein/transfer.js"></script>
     <script src="lib/geierlein/signer.js"></script>

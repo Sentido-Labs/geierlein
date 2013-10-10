@@ -9,12 +9,16 @@ pref("geierlein.defaultAddress.name", "");
 pref("geierlein.defaultAddress.strasse", "");
 pref("geierlein.defaultAddress.plz", "");
 pref("geierlein.defaultAddress.ort", "");
-pref("geierlein.defaultAddress.land", "");
+pref("geierlein.defaultAddress.land", "1");
 pref("geierlein.defaultAddress.telefon", "");
 pref("geierlein.defaultAddress.email", "");
 pref("geierlein.defaultAddress.steuernummer", "");
 
 pref("geierlein.debug.showDevelMenu", false);
+
+
+/* prefwindow basics */
+pref("browser.preferences.instantApply", false);
 
 
 /* extension manager */
